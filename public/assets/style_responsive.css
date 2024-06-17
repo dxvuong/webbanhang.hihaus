@@ -1,0 +1,81 @@
+
+/* Nhỏ hơn 576px */
+@media (max-width: 575.98px) {
+    .item_frame_header .item_frame_title h2 {
+        font-size: 15px;
+    }
+    .menu-icon {
+        width: 18px;
+    }
+
+}
+
+/* Lớn hơn hoặc bằng 576px */
+@media (min-width: 576px) {
+
+}
+
+/* Từ 576px đến 767px */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+/* Nhỏ hơn 767px */
+@media (max-width: 767.98px) {
+    .product_list .product>.inner {
+        height: unset;
+    }
+    .item_frame_header > .item_frame_title > h2 {
+        max-width: 65%;
+    }
+}
+
+/* Lớn hơn hoặc bằng 768px */
+@media (min-width: 768px) {
+
+}
+
+/* Từ 768px đến 991px */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* Nhỏ hơn 991px */
+@media (max-width: 991.98px) {
+
+}
+
+/* Lớn hơn hoặc bằng 992px */
+@media (min-width: 992px) {
+
+}
+
+/* Từ 992px đến 1199px */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+/* Nhỏ hơn 1199px */
+@media (max-width: 1199.98px) {
+
+}
+
+/* Lớn hơn hoặc bằng 1200 */
+@media (min-width: 1200px) {
+
+}
+
+/* Từ 1200px đến 1439px */
+@media (min-width: 1200px) and (max-width: 1439.98px) {
+
+}
+
+/* Nhỏ hơn 1439px */
+@media (max-width: 1439.98px) {
+
+}
+
+/* Lớn hơn hoặc bằng 1440px */
+@media (min-width: 1440px) {
+
+}

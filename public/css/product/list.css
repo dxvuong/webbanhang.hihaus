@@ -1,0 +1,144 @@
+.company-phone-number {
+    font-weight: 700;
+}
+.banner-main .image {
+    max-height: 400px;
+    max-width: 100%;
+}
+
+.list-group .list-group-item {
+    padding: 8px 0;
+    margin: 0 16px;
+}
+
+.fa-angle-down {
+    cursor: pointer;
+}
+
+.list-group a {
+    color: unset;
+}
+
+.list-group a:hover {
+    color: #fd542c;
+}
+
+.list-group .title.level-1 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.list-group-product {
+    max-height: 400px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* content */
+
+.content-item {
+    border-bottom: 1px solid #ccc;
+    padding: 12px;
+}
+.content-item-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.content-item:last-child {
+    border-bottom: unset;
+    padding-bottom: 0;
+}
+
+.content-item .item-data .item {
+    margin-right: 12px;
+    margin-top: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.content-item .item-data .item.active {
+    border-color: var(--background-color-main);
+}
+
+.content-item .item-data .item:hover {
+    border-color: var(--background-color-main);
+    color: var(--background-color-main);
+}
+
+.content-item .item-data .item .image {
+    width: 100%;
+    padding: 6px;
+    height: 52px;
+    object-fit: scale-down;
+}
+
+.content-item .item-data .item {
+    text-align: center;
+    color: unset;
+}
+
+.content-item .item-data .item .price {
+    padding: 6px;
+}
+
+.content-item .filter .filter-item {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.content-item .filter .filter-item .form-check-label {
+    white-space: nowrap
+}
+
+.content-item .description {
+    margin-bottom: 12px;
+}
+
+/* product */
+.product_list {
+    margin-top: 0;
+    padding: 0 6px;
+}
+
+.product_list > * {
+    padding: 0 6px;
+}
+
+.product_list .product .inner {
+    margin-bottom: 12px;
+    background-color: unset;
+    box-shadow: unset;
+    border-radius: 6px;
+}
+
+.content-item .showListPage .pagination {
+    margin: 12px 0;
+}
+
+.content-item .description-content {
+    max-height: 220px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.content-item .filter-value {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-right: 10px;
+}
+.content-item .filter-value .close {
+    margin-left: 5px;
+    position: relative;
+    cursor: pointer;
+    top: -6px;
+    right: -4px;
+}
+.content-item.value-filter .closeAll {
+    color: blue;
+    cursor: pointer;
+}
+.content-item .filter-value .close:hover,
+.content-item.value-filter .closeAll:hover {
+    color: red;
+}
