@@ -21,6 +21,7 @@
 	<link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/assets/style.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/css/custom.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('public/css/vuong.css')}}" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" type="text/css">
 	 <!--Owl Carousel -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -90,6 +91,7 @@
     $segments = explode('/', $path);
     $segment = $segments[0];
 @endphp
+
 <Header>
 	<div class="header-top d-none d-lg-flex align-items-center mb-2">
 		<div class="container">
@@ -449,308 +451,333 @@
 			</div>
 		</div>
 	</div>
+	<div class="div-header-hidden"></div>
 	<div class="header-bottom header-background-text-color">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container-fluid align-items-center p-0">
-					<div class="col-lg-10 ml-auto lg-flex-1">
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="overlay"></div>
-						<div class="mobile-menu">
-							<div class="close-button">
-								<button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-							</div>
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center mobile-align-items-start align-items-center gap-lg-3 height-lg-45">
-								@if($menuVertical->count() > 0)
-									<li class="nav-item dropdown d-flex align-items-center mobile-align-items-start category">
-										<a class="nav-link" href="/" style="color: #FFFFFF"><i class="fa-solid fa-bars margin-right-10"></i> DANH MỤC SẢN PHẨM</a>
-										<ul class="list-group list-group-flush dropdown-menu category-content category-main" aria-labelledby="navbarDropdown">
-											@foreach($menuVertical as $key => $item)
-												@if($key < 17)
-													<li class="list-group-item nav-item @if($item->children->count() > 0) dropdown @endif">
-														@if(!empty($item->link))
-															<a class="dropdown-item d-flex align-items-center @if($item->children->count() > 0) dropdown-toggle childMenu @endif" href="{{$item->link}}" style="white-space: normal">
-														<span class="me-1">
-                                                            {!! $item->menuIcon() !!}
-                                                        </span>
-																<span>
-															{{ $item->name }}
-														</span>
-															</a>
-														@else
-															<a class="dropdown-item d-flex align-items-center @if($item->children->count() > 0) dropdown-toggle childMenu @endif" href="#" style="white-space: normal">
-                                                        <span class="me-1">
-                                                            {!! $item->menuIcon() !!}
-                                                        </span>
-																<span>{{ $item->name }}</span>
-															</a>
-														@endif
-														@if($item->children->count() > 0)
-															<ul class="row dropdown-menu submenu-level-2">
-																<div class="row">
-																	@foreach($item->children as $childMenu)
-																		<li class="nav-item @if($childMenu->children->count() > 0) dropdown @endif ">
-																			@if(!empty($childMenu->link))
-																				<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle @endif" href="{{$childMenu->link}}" style="font-weight: 600; white-space: normal">{{$childMenu->name}}</a>
-																			@else
-																				<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle @endif" href="#" style="font-weight: 600; white-space: normal">{{$childMenu->name}}</a>
-																			@endif
-																			@if($childMenu->children->count() > 0)
-																				<ul style="margin: 5px 0 0 15px">
-																					@foreach($childMenu->children as $grandchildMenu)
-																						<li>
-																							<a href="{{ $grandchildMenu->link }}" class="text-decoration-none" style="white-space: normal">{{ $grandchildMenu->name }}</a>
-																						</li>
-																					@endforeach
-																				</ul>
-																			@endif
-																		</li>
-																	@endforeach
-																</div>
-															</ul>
-														@endif
-													</li>
-												@else
-													<li class="nav-item dropdown" style="padding: 4px 0 8px 0;">
-														<a class="dropdown-item d-flex align-items-center justify-content-center dropdown-toggle childMenu " href="#" style="white-space: normal">
-														<span class="me-1">
-                                                        </span>
-															<span>
-															Xem thêm
-														</span>
-														</a>
-														<ul class="row dropdown-menu submenu-level-2">
-															<div class="row">
-																@foreach($menuVertical as $k => $verticalItem)
-																	@if($k >= 17)
-																		<li class="nav-item @if($verticalItem->children->count() > 0) dropdown @endif ">
-																			@if(!empty($verticalItem->link))
-																				<a class="dropdown-item @if($verticalItem->children->count() > 0) dropdown-toggle @endif" href="{{$verticalItem->link}}" style="font-weight: 600; white-space: normal">{{$verticalItem->name}}</a>
-																			@else
-																				<a class="dropdown-item @if($verticalItem->children->count() > 0) dropdown-toggle @endif" href="#" style="font-weight: 600; white-space: normal">{{$verticalItem->name}}</a>
-																			@endif
-																			@if($verticalItem->children->count() > 0)
-																				<ul style="margin: 5px 0 0 15px; list-style: none">
-																					@foreach($verticalItem->children as $childMenu)
-																						<li class="nav-item @if($childMenu->children->count() > 0) dropdown @endif">
-																							<a href="{{ $childMenu->link }}" class="text-decoration-none @if($childMenu->children->count() > 0) dropdown-toggle @endif" style="white-space: normal"><i class="fa-solid fa-arrow-right"></i> {{ $childMenu->name }}</a>
-																							@if($childMenu->children->count() > 0)
-																								<ul style="margin: 5px 0 0 15px">
-																									@foreach($childMenu->children as $grandchildMenu)
-																										<li>
-																											<a href="{{ $grandchildMenu->link }}" class="text-decoration-none" style="white-space: normal">{{ $grandchildMenu->name }}</a>
-																										</li>
-																									@endforeach
-																								</ul>
-																							@endif
-																						</li>
-																					@endforeach
-																				</ul>
-																			@endif
-																		</li>
-																	@endif
-																@endforeach
-															</div>
-														</ul>
-													</li>
-													@break
-												@endif
-											@endforeach
-										</ul>
-									</li>
-								@endif
-								@foreach($menu as $item)
-									@php($link = trim($item->link, '/'))
-									<li class="nav-item @if($segment == $link) active @endif @if($item->children->count() > 0) dropdown @endif @if($item->link == 'app-api') dropdown @endif">
-										@if(!empty($item->link))
-											@if($item->link == 'app-api')
-												<a class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#" style="color: {{ $setting->header_text_color }}">
-													<span class="me-1">
-                                                       	{!! $item->menuIcon() !!}
-                                                    </span>
-													<span>
-														{{ $item->name }}
-													</span>
-												</a>
-											@else
-												<a class="nav-link d-flex justify-content-center align-items-center @if($item->children->count() > 0) dropdown-toggle @endif" href="{{$item->link}}" style="color: {{ $setting->header_text_color }}">
-													<span class="me-1">
-                                                       	{!! $item->menuIcon() !!}
-                                                    </span>
-													<span>
-														{{ $item->name }}
-													</span>
-												</a>
-											@endif
-										@else
-											<a class="nav-link d-flex justify-content-center align-items-center @if($item->children->count() > 0) dropdown-toggle @endif" href="#" style="color: {{ $setting->header_text_color }}">
-												<span class="me-1">
-                                                   	{!! $item->menuIcon() !!}
-                                                </span>
-												<span>
-													{{ $item->name }}
-												</span>
-											</a>
-										@endif
-										@if(!empty($item->link == 'app-api'))
-												<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-													@foreach($appMenu as $appItem)
-														<li class="nav-item @if($appItem->children->count() > 0) dropdown @endif">
-															<a class="dropdown-item @if($appItem->children->count() > 0) dropdown-toggle childMenu @endif" href="{{ '/' . $item->slug . '/' . $appItem->slug }}">{{$appItem->name}}</a>
-															@if($appItem->children->count() > 0)
-																<ul class="dropdown-menu submenu-level-2" aria-labelledby="navbarDropdown">
-																	@foreach($appItem->children as $appChildMenu)
-																		<li @if($appChildMenu->children->count() > 0) class="nav-item dropdown" @endif>
-																			<a class="dropdown-item @if($appChildMenu->children->count() > 0) dropdown-toggle childMenu @endif" href="{{ '/' . $item->slug . '/' . $appChildMenu->slug }}">{{$appChildMenu->name}}</a>
-																			@if($appChildMenu->children->count() > 0)
-																				<ul class="dropdown-menu submenu-level-2" aria-labelledby="navbarDropdownSubmenu">
-																					@foreach($appChildMenu->children as $appGrandchildMenu)
-																						<li class="nav-item">
-																							<a class="nav-link" href="{{ '/' . $item->slug . '/' . $appGrandchildMenu->slug }}">{{$appGrandchildMenu->name}}</a>
-																						</li>
-																					@endforeach
-																				</ul>
-																			@endif
-																		</li>
-																	@endforeach
-																</ul>
-															@endif
-														</li>
-													@endforeach
-												</ul>
-										@endif
-										@if($item->children->count() > 0)
-												<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-													@foreach($item->children as $childMenu)
-														<li @if($childMenu->children->count() > 0) class="nav-item dropdown" @endif>
-															@if(!empty($childMenu->link))
-																<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle childMenu @endif" href="{{$childMenu->link}}">
-																	<span class="me-1">
-																		{!! $childMenu->menuIcon() !!}
-																	</span>
-																	<span>{{ $childMenu->name }}</span>
-																</a>
-															@else
-																<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle childMenu @endif" href="#">
-																	<span class="me-1">
-																		{!! $childMenu->menuIcon() !!}
-																	</span>
-																	<span>{{ $childMenu->name }}</span>
-																</a>
-															@endif
-															@if($childMenu->children->count() > 0)
-																	<ul class="dropdown-menu submenu-level-2" aria-labelledby="navbarDropdownSubmenu">
-																	@foreach($childMenu->children as $grandchildMenu)
-																		<li class="nav-item">
-																			@if(!empty($grandchildMenu->link))
-																				<a class="dropdown-item" href="{{$grandchildMenu->link}}">
-																					<span class="me-1">
-																						{!! $grandchildMenu->menuIcon() !!}
-																					</span>
-																					<span>{{ $grandchildMenu->name }}</span>
-																				</a>
-																			@else
-																				<a class="dropdown-item" href="#">
-																					<span class="me-1">
-																						{!! $grandchildMenu->menuIcon() !!}
-																					</span>
-																					<span>{{ $grandchildMenu->name }}</span>
-																				</a>
-																			@endif
-																		</li>
-																	@endforeach
-																</ul>
-															@endif
-														</li>
-													@endforeach
-												</ul>
-										@endif
-									</li>
-								@endforeach
-							</ul>
-							<div class="language d-flex flex-column d-lg-none" style="margin: 0 20px">
-								<a href="{{route('index.lang')}}/vi">
-									<img src="{{asset('public/assets/images/vi.jpg')}}" alt="VI" width="38" height="25" style="width: 38px !important;">
-								</a>
-								<a href="{{route('index.lang')}}/en">
-									<img src="{{asset('public/assets/images/en.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important; margin-top: 10px">
-								</a>
-								<a href="{{route('index.lang')}}/ja">
-									<img src="{{asset('public/assets/images/ja.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important; margin-top: 10px">
-								</a>
-								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-									@if(!empty(Auth::user()))
-										<li class="nav-item d-lg-none">
-											<a class="nav-link " href="{{ route('user.auth.detail') }}">Tài khoản của tôi</a>
-										</li>
-										<li class="nav-item d-lg-none">
-											<a class="nav-link " href="{{ route('user.logout') }}">Đăng xuất</a>
-										</li>
-									@else
-										<li class="nav-item d-lg-none">
-											<a class="nav-link btn-dang-nhap-user" href="#"><span>Đăng nhập</span></a>
-										</li>
-										<li class="nav-item d-lg-none">
-											<a class="nav-link" href="{{ route('user.register') }}"><span>Đăng ký</span></a>
-										</li>
-									@endif
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="d-none d-lg-flex justify-content-end">
-						<div class="language d-flex justify-content-end">
-							<a href="{{route('index.lang')}}/vi">
-								<img src="{{asset('public/assets/images/vi.jpg')}}" alt="VI" width="38" height="25" style="width: 38px !important; margin-right: 4px;">
-							</a>
-							<a href="{{route('index.lang')}}/en">
-								<img src="{{asset('public/assets/images/en.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important; margin-right: 4px;">
-							</a>
-							<a href="{{route('index.lang')}}/ja">
-								<img src="{{asset('public/assets/images/ja.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important;">
-							</a>
-						</div>
-					</div>
-					<div class="header-logo d-lg-none">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-3 col-header-left">
+					<div class="div-header-left">
 						<a href="{{url('/')}}">
-							<img src="{{ Config::get('app.PATH_ADMIN').$setting->logo_header }}" alt="logo" style="width: 214px!important; max-height: unset"/>
+							<img src="{{ Config::get('app.PATH_ADMIN').$setting->logo_header }}" alt="logo"/>
 						</a>
-					</div>
-					<div class="header-card d-lg-none">
-						<a href="{{url('gio-hang')}}" class="d-flex">
-							<div class="icon">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-								@if(!empty(session()->all()['mini_cart']))
-									@php($count = 0)
-									@foreach(session()->all()['mini_cart'] as $item)
-										@php($count += $item['qty'])
-									@endforeach
-									<span class="count">{{$count}}</span>
-								@else
-									<span class="count">0</span>
-								@endif
-							</div>
-						</a>
-					</div>
-					<div class="header-search col-7 d-lg-none">
-						<form class="form-inline" action="{{route('list.product')}}" method="GET">
-							<div class="input-group">
-								<input type="text" class="form-control" name="search" placeholder="Tìm sản phẩm?">
-								<div class="input-group-append">
-									<button class="btn" type="submit" aria-label="Tìm sản phẩm"><i class="fa fa-search" aria-hidden="true"></i></button>
-								</div>
-							</div>
-						</form>
 					</div>
 				</div>
-			</nav>
+				<div class="col-7 col-header-center">
+					<nav class="navbar navbar-expand-lg navbar-light">
+						<div class="container-fluid align-items-center p-0">
+							<div class="col-lg-10 ml-auto lg-flex-1">
+								<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
+								<div class="overlay"></div>
+								<div class="mobile-menu">
+									<div class="close-button">
+										<button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+											<span class="navbar-toggler-icon"></span>
+										</button>
+									</div>
+									<ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center mobile-align-items-start align-items-center gap-lg-3 height-lg-45">
+										@if($menuVertical->count() > 0)
+											<li class="nav-item dropdown d-flex align-items-center mobile-align-items-start category">
+												<a class="nav-link" href="/" style="color: #FFFFFF"><i class="fa-solid fa-bars margin-right-10"></i> DANH MỤC SẢN PHẨM</a>
+												<ul class="list-group list-group-flush dropdown-menu category-content category-main" aria-labelledby="navbarDropdown">
+													@foreach($menuVertical as $key => $item)
+														@if($key < 17)
+															<li class="list-group-item nav-item @if($item->children->count() > 0) dropdown @endif">
+																@if(!empty($item->link))
+																	<a class="dropdown-item d-flex align-items-center @if($item->children->count() > 0) dropdown-toggle childMenu @endif" href="{{$item->link}}" style="white-space: normal">
+																<span class="me-1">
+																	{!! $item->menuIcon() !!}
+																</span>
+																		<span>
+																	{{ $item->name }}
+																</span>
+																	</a>
+																@else
+																	<a class="dropdown-item d-flex align-items-center @if($item->children->count() > 0) dropdown-toggle childMenu @endif" href="#" style="white-space: normal">
+																<span class="me-1">
+																	{!! $item->menuIcon() !!}
+																</span>
+																		<span>{{ $item->name }}</span>
+																	</a>
+																@endif
+																@if($item->children->count() > 0)
+																	<ul class="row dropdown-menu submenu-level-2">
+																		<div class="row">
+																			@foreach($item->children as $childMenu)
+																				<li class="nav-item @if($childMenu->children->count() > 0) dropdown @endif ">
+																					@if(!empty($childMenu->link))
+																						<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle @endif" href="{{$childMenu->link}}" style="font-weight: 600; white-space: normal">{{$childMenu->name}}</a>
+																					@else
+																						<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle @endif" href="#" style="font-weight: 600; white-space: normal">{{$childMenu->name}}</a>
+																					@endif
+																					@if($childMenu->children->count() > 0)
+																						<ul style="margin: 5px 0 0 15px">
+																							@foreach($childMenu->children as $grandchildMenu)
+																								<li>
+																									<a href="{{ $grandchildMenu->link }}" class="text-decoration-none" style="white-space: normal">{{ $grandchildMenu->name }}</a>
+																								</li>
+																							@endforeach
+																						</ul>
+																					@endif
+																				</li>
+																			@endforeach
+																		</div>
+																	</ul>
+																@endif
+															</li>
+														@else
+															<li class="nav-item dropdown" style="padding: 4px 0 8px 0;">
+																<a class="dropdown-item d-flex align-items-center justify-content-center dropdown-toggle childMenu " href="#" style="white-space: normal">
+																<span class="me-1">
+																</span>
+																	<span>
+																	Xem thêm
+																</span>
+																</a>
+																<ul class="row dropdown-menu submenu-level-2">
+																	<div class="row">
+																		@foreach($menuVertical as $k => $verticalItem)
+																			@if($k >= 17)
+																				<li class="nav-item @if($verticalItem->children->count() > 0) dropdown @endif ">
+																					@if(!empty($verticalItem->link))
+																						<a class="dropdown-item @if($verticalItem->children->count() > 0) dropdown-toggle @endif" href="{{$verticalItem->link}}" style="font-weight: 600; white-space: normal">{{$verticalItem->name}}</a>
+																					@else
+																						<a class="dropdown-item @if($verticalItem->children->count() > 0) dropdown-toggle @endif" href="#" style="font-weight: 600; white-space: normal">{{$verticalItem->name}}</a>
+																					@endif
+																					@if($verticalItem->children->count() > 0)
+																						<ul style="margin: 5px 0 0 15px; list-style: none">
+																							@foreach($verticalItem->children as $childMenu)
+																								<li class="nav-item @if($childMenu->children->count() > 0) dropdown @endif">
+																									<a href="{{ $childMenu->link }}" class="text-decoration-none @if($childMenu->children->count() > 0) dropdown-toggle @endif" style="white-space: normal"><i class="fa-solid fa-arrow-right"></i> {{ $childMenu->name }}</a>
+																									@if($childMenu->children->count() > 0)
+																										<ul style="margin: 5px 0 0 15px">
+																											@foreach($childMenu->children as $grandchildMenu)
+																												<li>
+																													<a href="{{ $grandchildMenu->link }}" class="text-decoration-none" style="white-space: normal">{{ $grandchildMenu->name }}</a>
+																												</li>
+																											@endforeach
+																										</ul>
+																									@endif
+																								</li>
+																							@endforeach
+																						</ul>
+																					@endif
+																				</li>
+																			@endif
+																		@endforeach
+																	</div>
+																</ul>
+															</li>
+															@break
+														@endif
+													@endforeach
+												</ul>
+											</li>
+										@endif
+										@foreach($menu as $item)
+											@php($link = trim($item->link, '/'))
+											<li class="nav-item @if($segment == $link) active @endif @if($item->children->count() > 0) dropdown @endif @if($item->link == 'app-api') dropdown @endif">
+												@if(!empty($item->link))
+													@if($item->link == 'app-api')
+														<a class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#" style="color: {{ $setting->header_text_color }}">
+															<span class="me-1">
+																{!! $item->menuIcon() !!}
+															</span>
+															<span>
+																{{ $item->name }}
+															</span>
+														</a>
+													@else
+														<a class="nav-link d-flex justify-content-center align-items-center @if($item->children->count() > 0) dropdown-toggle @endif" href="{{$item->link}}" style="color: {{ $setting->header_text_color }}">
+															<span class="me-1">
+																{!! $item->menuIcon() !!}
+															</span>
+															<span>
+																{{ $item->name }}
+															</span>
+														</a>
+													@endif
+												@else
+													<a class="nav-link d-flex justify-content-center align-items-center @if($item->children->count() > 0) dropdown-toggle @endif" href="#" style="color: {{ $setting->header_text_color }}">
+														<span class="me-1">
+															{!! $item->menuIcon() !!}
+														</span>
+														<span>
+															{{ $item->name }}
+														</span>
+													</a>
+												@endif
+												@if(!empty($item->link == 'app-api'))
+														<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+															@foreach($appMenu as $appItem)
+																<li class="nav-item @if($appItem->children->count() > 0) dropdown @endif">
+																	<a class="dropdown-item @if($appItem->children->count() > 0) dropdown-toggle childMenu @endif" href="{{ '/' . $item->slug . '/' . $appItem->slug }}">{{$appItem->name}}</a>
+																	@if($appItem->children->count() > 0)
+																		<ul class="dropdown-menu submenu-level-2" aria-labelledby="navbarDropdown">
+																			@foreach($appItem->children as $appChildMenu)
+																				<li @if($appChildMenu->children->count() > 0) class="nav-item dropdown" @endif>
+																					<a class="dropdown-item @if($appChildMenu->children->count() > 0) dropdown-toggle childMenu @endif" href="{{ '/' . $item->slug . '/' . $appChildMenu->slug }}">{{$appChildMenu->name}}</a>
+																					@if($appChildMenu->children->count() > 0)
+																						<ul class="dropdown-menu submenu-level-2" aria-labelledby="navbarDropdownSubmenu">
+																							@foreach($appChildMenu->children as $appGrandchildMenu)
+																								<li class="nav-item">
+																									<a class="nav-link" href="{{ '/' . $item->slug . '/' . $appGrandchildMenu->slug }}">{{$appGrandchildMenu->name}}</a>
+																								</li>
+																							@endforeach
+																						</ul>
+																					@endif
+																				</li>
+																			@endforeach
+																		</ul>
+																	@endif
+																</li>
+															@endforeach
+														</ul>
+												@endif
+												@if($item->children->count() > 0)
+														<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+															@foreach($item->children as $childMenu)
+																<li @if($childMenu->children->count() > 0) class="nav-item dropdown" @endif>
+																	@if(!empty($childMenu->link))
+																		<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle childMenu @endif" href="{{$childMenu->link}}">
+																			<span class="me-1">
+																				{!! $childMenu->menuIcon() !!}
+																			</span>
+																			<span>{{ $childMenu->name }}</span>
+																		</a>
+																	@else
+																		<a class="dropdown-item @if($childMenu->children->count() > 0) dropdown-toggle childMenu @endif" href="#">
+																			<span class="me-1">
+																				{!! $childMenu->menuIcon() !!}
+																			</span>
+																			<span>{{ $childMenu->name }}</span>
+																		</a>
+																	@endif
+																	@if($childMenu->children->count() > 0)
+																			<ul class="dropdown-menu submenu-level-2" aria-labelledby="navbarDropdownSubmenu">
+																			@foreach($childMenu->children as $grandchildMenu)
+																				<li class="nav-item">
+																					@if(!empty($grandchildMenu->link))
+																						<a class="dropdown-item" href="{{$grandchildMenu->link}}">
+																							<span class="me-1">
+																								{!! $grandchildMenu->menuIcon() !!}
+																							</span>
+																							<span>{{ $grandchildMenu->name }}</span>
+																						</a>
+																					@else
+																						<a class="dropdown-item" href="#">
+																							<span class="me-1">
+																								{!! $grandchildMenu->menuIcon() !!}
+																							</span>
+																							<span>{{ $grandchildMenu->name }}</span>
+																						</a>
+																					@endif
+																				</li>
+																			@endforeach
+																		</ul>
+																	@endif
+																</li>
+															@endforeach
+														</ul>
+												@endif
+											</li>
+										@endforeach
+									</ul>
+									<div class="language d-flex flex-column d-lg-none" style="margin: 0 20px">
+										<a href="{{route('index.lang')}}/vi">
+											<img src="{{asset('public/assets/images/vi.jpg')}}" alt="VI" width="38" height="25" style="width: 38px !important;">
+										</a>
+										<a href="{{route('index.lang')}}/en">
+											<img src="{{asset('public/assets/images/en.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important; margin-top: 10px">
+										</a>
+										<a href="{{route('index.lang')}}/ja">
+											<img src="{{asset('public/assets/images/ja.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important; margin-top: 10px">
+										</a>
+										<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+											@if(!empty(Auth::user()))
+												<li class="nav-item d-lg-none">
+													<a class="nav-link " href="{{ route('user.auth.detail') }}">Tài khoản của tôi</a>
+												</li>
+												<li class="nav-item d-lg-none">
+													<a class="nav-link " href="{{ route('user.logout') }}">Đăng xuất</a>
+												</li>
+											@else
+												<li class="nav-item d-lg-none">
+													<a class="nav-link btn-dang-nhap-user" href="#"><span>Đăng nhập</span></a>
+												</li>
+												<li class="nav-item d-lg-none">
+													<a class="nav-link" href="{{ route('user.register') }}"><span>Đăng ký</span></a>
+												</li>
+											@endif
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="div-language d-none d-lg-flex justify-content-end">
+								<div class="language d-flex justify-content-end">
+									<a href="{{route('index.lang')}}/vi">
+										<img src="{{asset('public/assets/images/vi.jpg')}}" alt="VI" width="38" height="25" style="width: 38px !important; margin-right: 4px;">
+									</a>
+									<a href="{{route('index.lang')}}/en">
+										<img src="{{asset('public/assets/images/en.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important; margin-right: 4px;">
+									</a>
+									<a href="{{route('index.lang')}}/ja">
+										<img src="{{asset('public/assets/images/ja.jpg')}}" alt="EN" width="38" height="25" style="width: 38px !important;">
+									</a>
+								</div>
+							</div>
+							<div class="header-logo d-lg-none">
+								<a href="{{url('/')}}">
+									<img src="{{ Config::get('app.PATH_ADMIN').$setting->logo_header }}" alt="logo" style="width: 214px!important; max-height: unset"/>
+								</a>
+							</div>
+							<div class="header-card d-lg-none">
+								<a href="{{url('gio-hang')}}" class="d-flex">
+									<div class="icon">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+										@if(!empty(session()->all()['mini_cart']))
+											@php($count = 0)
+											@foreach(session()->all()['mini_cart'] as $item)
+												@php($count += $item['qty'])
+											@endforeach
+											<span class="count">{{$count}}</span>
+										@else
+											<span class="count">0</span>
+										@endif
+									</div>
+								</a>
+							</div>
+							<div class="header-search col-7 d-lg-none">
+								<form class="form-inline" action="{{route('list.product')}}" method="GET">
+									<div class="input-group">
+										<input type="text" class="form-control" name="search" placeholder="Tìm sản phẩm?">
+										<div class="input-group-append">
+											<button class="btn" type="submit" aria-label="Tìm sản phẩm"><i class="fa fa-search" aria-hidden="true"></i></button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div class="col-2 col-header-right">
+					<div class="div-header-right">
+						@foreach($headerSettings as $headerSetting)
+							@if($headerSetting->type == 'phone')
+								{!! $headerSetting->icon !!}
+								@if(!empty($headerSetting->content))
+									{{ $headerSetting->content }}
+								@endif
+							@endif
+						@endforeach
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </Header>
+
 @yield('main')
 <div class="scroll-top-btn" style="display: block;">
 	<i class="fa fa-arrow-up"></i>
