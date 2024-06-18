@@ -21,7 +21,7 @@
 	<link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/assets/style.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/css/custom.css')}}" rel="stylesheet" type="text/css">
-	<link href="{{asset('public/css/vuong.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('public/css/vuong.css?v=1.0.1')}}" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" type="text/css">
 	 <!--Owl Carousel -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -784,6 +784,7 @@
 	<span class="hover-text">Top</span>
 </div>
 <div class="link_chat_social position-fixed">
+	<!-- 
 	<div class="link_chat_email">
 		<a href="/lien-he" target="_blank">
 			<div class="phone-vr-img-circle">
@@ -792,6 +793,7 @@
 			</div>
 		</a>
 	</div>
+	-->
 	@if(!empty($setting->linkedin))
 		<div class="link_chat_facebook">
 			<a href="{{ $setting->linkedin }}" target="_blank">
