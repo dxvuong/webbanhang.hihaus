@@ -22,6 +22,11 @@
 .div-header-right i{
     margin-right: 10px;
 }
+@media (min-width: 1440px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1620px;
+    }
+}
 @media (min-width: 992px) {
     .col-header-left{
         border-bottom: 1px solid #BBBBBB; border-right: 1px solid #BBBBBB; width: 22%;
