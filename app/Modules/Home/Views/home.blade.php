@@ -562,6 +562,45 @@
                     $news = \App\Modules\Blog\Models\Blog::where('status', 1)->orderBy('order', 'ASC')->orderBy('created_at', 'DESC')->take(4)->get();
                     $mainNews = \App\Modules\Blog\Models\Blog::where('status', 1)->where('is_main', '=', 1)->orderBy('updated_at', 'DESC')->first();
                 @endphp
+                <div class="div-tin-tuc" style="background-color: {{ $data['homeSetting']->background_color }}">
+                    <h3 class="tin-tuc-title">Tin tức</h3>
+                    <div class="container">
+                        <div class="row">
+                            @foreach($news as $keyNew => $new)
+                                <div class="col-md-6">
+                                    <div class="tin-tuc-all-item">
+                                        @if($keyNew < 2)
+                                            <div class="div-line-top">
+                                            </div>
+                                        @endif
+                                        <div class="tin-tuc-item">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="tin-tuc-item-img">
+                                                        <a href="{{ $new->generateURL() }}">
+                                                            <img loading="lazy" class="image" src="{{ $admin_url . $new->image }}" alt="{{ $new->name }}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="tin-tuc-item-content">
+                                                        <a href="{{ $new->generateURL() }}">
+                                                            <p class="p1">{{ $new->name }}</p>
+                                                        </a>
+                                                        <p class="p2">{{ $new->description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="div-line-bottom">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <?php /*
                 <div class="news-list item_frame" style="background-color: {{ $data['homeSetting']->background_color }}">
                     <div class="container">
                         <div class="item_frame_background">
@@ -607,6 +646,7 @@
                         </div>
                     </div>
                 </div>
+                */ ?>
             @elseif($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::BRAND_TYPE)
                 @php
                     $brands = \App\Modules\Home\Models\Brand::where('status', 1)->orderBy('order', 'ASC')->orderBy('created_at', 'DESC')->get();
