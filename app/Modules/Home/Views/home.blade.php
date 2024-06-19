@@ -444,7 +444,7 @@
                                 <p style="text-align: center;"><i>{{ $data['homeSetting']->description }}</i></p>
                             </div>
                         </div>
-                        <div class="owl-carousel owl-theme mb-4 row justify-content-center" data-col="{{ $data['homeSetting']->quantity }}">
+                        <div class="owl-carousel owl-theme row justify-content-center" data-col="{{ $data['homeSetting']->quantity }}">
                             @foreach($photoLibrary as $image)
                                 <div class="item">
                                     <a href="{{ $image->link }}">
