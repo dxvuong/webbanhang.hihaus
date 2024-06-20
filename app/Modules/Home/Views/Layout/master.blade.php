@@ -21,7 +21,7 @@
 	<link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/assets/style.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/css/custom.css')}}" rel="stylesheet" type="text/css">
-	<link href="{{asset('public/css/vuong.css?v=1.0.2')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('public/css/vuong.css?v=1.0.3')}}" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" type="text/css">
 	 <!--Owl Carousel -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -779,6 +779,42 @@
 </Header>
 
 @yield('main')
+
+<div class="div-lien-he">
+	@php
+		use App\Modules\Home\Models\HomeSetting;
+		$lienHe = HomeSetting::where('title', 'Liên hệ Hihaus')->first();
+	@endphp
+	<div class="container-fuild">
+		<div class="row">
+			<div class="col-md-3 col-md-3-1">
+				<div class="div-lien-he-1">
+					{!!$lienHe!=null?$lienHe->description:''!!}
+				</div>
+			</div>
+			<div class="col-md-3 col-md-3-2">
+				<div class="div-lien-he-2">
+					<button data-bs-toggle="modal" data-bs-target="#modal-yeu-cau-bao-gia">Yêu cầu báo giá <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+					<a href="{{url('/lien-he')}}">
+						<button>Liên hệ Hihaus <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+					</a>
+					<button data-bs-toggle="modal" data-bs-target="#modal-dang-ky-nhan-tin">Đăng ký nhận tin <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+				</div>
+			</div>
+			<div class="col-md-3 col-md-3-3">
+				<div class="div-lien-he-3">
+					{!!$lienHe!=null?$lienHe->content:''!!}
+				</div>
+			</div>
+			<div class="col-md-3 col-md-3-4">
+				<div class="div-lien-he-4">
+					{!!$lienHe!=null?$lienHe->css:''!!}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="scroll-top-btn" style="display: block;">
 	<i class="fa fa-arrow-up"></i>
 	<span class="hover-text">Top</span>
@@ -1057,6 +1093,101 @@
 		</div>
 	</div>
 </div>
+
+<!-- modal-yeu-cau-bao-gia -->
+<div class="modal" id="modal-yeu-cau-bao-gia">
+	<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">YÊU CẦU BÁO GIÁ</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<p>
+					Bạn đang băn khoăn về việc lựa chọn mặt bằng và không gian cho văn phòng mới ? Hãy liên hệ với chúng tôi để được nhận tư vấn kịp thời.
+				</p>
+				<form id="form-yeu-cau-bao-gia" action="" name="" method="POST" enctype="multipart/form-data">
+					{!! csrf_field() !!}
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="fullname" placeholder="HỌ VÀ TÊN">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="email" placeholder="EMAIL CỦA BẠN">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="phone" placeholder="SỐ ĐIỆN THOẠI">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input type="text" class="form-control" name="message" placeholder="LỜI NHẮN">
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+								<button type="button" class="btn-dang-ky" onclick="submitYeuCauBaoGia()">ĐĂNG KÝ</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- modal-dang-ky-nhan-tin -->
+<div class="modal" id="modal-dang-ky-nhan-tin">
+	<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">ĐĂNG KÝ NHẬN BẢN TIN</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<form id="form-dang-ky-nhan-tin" action="" name="" method="POST" enctype="multipart/form-data">
+					{!! csrf_field() !!}
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<input type="text" class="form-control" name="email" placeholder="EMAIL CỦA BẠN">
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group">
+								<button type="button" class="btn-dang-ky" onclick="submitDangKyNhanBanTin()">ĐĂNG KÝ</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			</div>
+
+		</div>
+	</div>
+</div>
+
 <!-- start js include path -->
 <script src="{{asset('public/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('public/assets/js/swiper-bundle.min.js')}}"></script>
@@ -1072,6 +1203,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 <script>
+	function submitYeuCauBaoGia(){
+		popup_load_on();
+		var form_data = new FormData($("#form-yeu-cau-bao-gia")[0]);
+		$.ajax({
+			url: "{{url('/submitYeuCauBaoGia')}}",
+			data: form_data,
+			type: 'POST',
+			contentType: false,
+			processData: false,
+			success: function (result) {
+				console.log(result);
+				popup_load_off();
+				if(result.status == 'true'){
+					alert(result.message);
+					window.location.reload();
+				}else{
+					alert(result.message);
+					/* window.location.reload(); */
+				}
+			}
+		});
+	}
+	function submitDangKyNhanBanTin(){
+		popup_load_on();
+		var form_data = new FormData($("#form-dang-ky-nhan-tin")[0]);
+		$.ajax({
+			url: "{{url('/submitDangKyNhanBanTin')}}",
+			data: form_data,
+			type: 'POST',
+			contentType: false,
+			processData: false,
+			success: function (result) {
+				console.log(result);
+				popup_load_off();
+				if(result.status == 'true'){
+					alert(result.message);
+					window.location.reload();
+				}else{
+					alert(result.message);
+					/* window.location.reload(); */
+				}
+			}
+		});
+	}
+
 	$(document).ready(function() {
 		$('Header .menu ul li .toggle_child').on('click', function () {
 			$(this).siblings('ul.sub-menu').toggle();

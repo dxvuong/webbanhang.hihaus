@@ -1815,7 +1815,6 @@
     </div>
 @endsection
 
-
 @section('styles')
     <link href="{{asset('public/assets/home.css')}}" rel="stylesheet" type="text/css">
     <style>

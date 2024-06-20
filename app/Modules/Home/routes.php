@@ -20,6 +20,8 @@ Route::group(
         Route::post('/signup_submit', 'HomeController@signup_submit');
         Route::post('/selectdictrict', 'HomeController@loadQuanHuyen')->where('id', '[0-9]+');
         Route::post('/selectward', 'HomeController@loadXaPhuong')->where('id', '[0-9]+');
+        Route::post('/submitYeuCauBaoGia', 'HomeController@submitYeuCauBaoGia');
+        Route::post('/submitDangKyNhanBanTin', 'HomeController@submitDangKyNhanBanTin');
     }
 );
 

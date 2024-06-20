@@ -24,6 +24,7 @@ use App\Modules\Home\Models\DonHangKhachHangVipModel;
 use App\Modules\Home\Models\DonHangKhachHangVipSanPhamModel;
 use App\Modules\Home\Models\KhachHangVipModel;
 use App\Modules\Home\Models\WProductModel;
+use App\Modules\Home\Models\ContactsModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -385,4 +386,50 @@ class HomeController extends Controller{
             echo "Pull thành công!";
         }
     }
+	
+    public function submitYeuCauBaoGia(Request $request){
+		if($request->get('fullname') == null){
+			return Response::json(['status' => 'false', 'message' => 'Vui lòng nhập họ và tên.']);
+		}
+		if($request->get('email') == null){
+			return Response::json(['status' => 'false', 'message' => 'Vui lòng nhập email của bạn.']);
+		}
+		if($request->get('phone') == null){
+			return Response::json(['status' => 'false', 'message' => 'Vui lòng nhập số điện thoại.']);
+		}
+		if($request->get('message') == null){
+			return Response::json(['status' => 'false', 'message' => 'Vui lòng nhập lời nhắn.']);
+		}
+		## insert  contacts
+		$contact = ContactsModel::findOrNew('');
+		$contact->name = $request->get('fullname');
+		$contact->email = $request->get('email');
+		$contact->phone = $request->get('phone');
+		$contact->link = '';
+		$contact->subject = 'Yêu cầu báo giá';
+		$contact->content = $request->get('message');
+		$contact->status = 0;
+		$contact->save();
+		return Response::json(['status' => 'true', 'message' => 'Đăng ký thành công.']);
+	}
+	
+    public function submitDangKyNhanBanTin(Request $request){
+		if($request->get('email') == null){
+			return Response::json(['status' => 'false', 'message' => 'Vui lòng nhập email của bạn.']);
+		}
+		## insert  contacts
+		$contact = ContactsModel::findOrNew('');
+		$contact->name = '';
+		$contact->email = $request->get('email');
+		$contact->phone = 0;
+		$contact->link = '';
+		$contact->subject = 'Đăng ký nhận bản tin';
+		$contact->content = '';
+		$contact->status = 0;
+		$contact->save();
+		return Response::json(['status' => 'true', 'message' => 'Đăng ký thành công.']);
+	}
+
+
+
 }

@@ -22,11 +22,6 @@
 .div-header-right i{
     margin-right: 10px;
 }
-@media (min-width: 1440px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-        max-width: 1620px;
-    }
-}
 @media (min-width: 992px) {
     .col-header-left{
         border-bottom: 1px solid #BBBBBB; border-right: 1px solid #BBBBBB; width: 22%;
@@ -48,6 +43,19 @@
     }
     .div-header-hidden{
         width: 100%; height: 80px;
+    }
+}
+@media (min-width: 1440px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1620px;
+    }
+    .container-fuild{
+        max-width: 1620px; margin: 0 auto; position: relative;
+    }
+}
+@media (min-width: 1840px) {
+    .container-fuild{
+        max-width: 1780px; margin: 0 auto; position: relative;
     }
 }
 @media(max-width: 991px){
@@ -116,5 +124,111 @@
     }
     .div-tin-tuc .tin-tuc-all-item .tin-tuc-item .col-md-8{
         width: 60%; padding-left: 0;
+    }
+}
+
+
+/* div-lien-he */
+.div-lien-he{
+    width: 100%; height: auto; padding: 30px 10px 10px 10px;
+}
+.div-lien-he .div-lien-he-2{
+    width: 100%; height: auto; padding: 0px 0;
+}
+.div-lien-he .div-lien-he-2 button{
+    width: 100%; height: 50px; background-color: #fff; border: 1px solid #9B9B9B; border-radius: 4px; margin-bottom: 20px;
+}
+.div-lien-he .div-lien-he-2 button:hover{
+    color: #F47920;
+}
+.div-lien-he .div-lien-he-3{
+    width: 100%; height: auto; padding: 0px 0px;
+}
+.div-lien-he .div-lien-he-4{
+    width: 100%; height: auto; padding: 0px 0px;
+}
+@media (min-width: 992px) {
+    .div-lien-he{
+        padding: 30px 30px 10px 30px;
+    }
+    .div-lien-he .div-lien-he-3{
+        border-left: 1px solid #9B9B9B; min-height: 190px; padding: 0px 25px;
+    }
+    .div-lien-he .div-lien-he-4{
+        border-left: 1px solid #9B9B9B; min-height: 190px; padding: 0px 10px;
+    }
+    .div-lien-he .col-md-3-1{
+        width: 20%;
+    }
+    .div-lien-he .col-md-3-2{
+        width: 25%;
+    }
+    .div-lien-he .col-md-3-3{
+        width: 28%;
+    }
+    .div-lien-he .col-md-3-4{
+        width: 27%;
+    }
+}
+
+/* modal-yeu-cau-bao-gia */
+#modal-yeu-cau-bao-gia{
+    text-align: center;
+}
+#modal-yeu-cau-bao-gia .modal-header{
+    display: unset; position: relative; background-color: #F47920; color: #fff; border-bottom: 1px solid #F47920;
+}
+#modal-yeu-cau-bao-gia .modal-header button{
+    position: absolute; right: 20px; top: 20px;
+}
+#modal-yeu-cau-bao-gia .modal-body{
+    background-color: #F47920; color: #fff;
+}
+#modal-yeu-cau-bao-gia .modal-body .form-group{
+    margin: 10px 0px;
+}
+#modal-yeu-cau-bao-gia .modal-footer{
+    background-color: #F47920; color: #fff; border-top: 1px solid #F47920;
+}
+#modal-yeu-cau-bao-gia input{
+    width: 100%; height: 50px; border: 0px; border-radius: 8px;
+}
+#modal-yeu-cau-bao-gia .btn-dang-ky{
+    width: 100%; height: 50px; border: 0px; border-radius: 8px; background-color: #000000; color: #fff;
+}
+@media (min-width: 992px) {
+    #modal-yeu-cau-bao-gia .modal-body{
+        padding: 0 80px;
+    }
+}
+
+/* modal-dang-ky-nhan-tin */
+#modal-dang-ky-nhan-tin{
+    text-align: center;
+}
+#modal-dang-ky-nhan-tin .modal-header{
+    display: unset; position: relative; background-color: #F47920; color: #fff; border-bottom: 1px solid #F47920;
+}
+#modal-dang-ky-nhan-tin .modal-header button{
+    position: absolute; right: 20px; top: 20px;
+}
+#modal-dang-ky-nhan-tin .modal-body{
+    background-color: #F47920; color: #fff;
+}
+#modal-dang-ky-nhan-tin .modal-body .form-group{
+    margin: 10px 0px;
+}
+#modal-dang-ky-nhan-tin .modal-footer{
+    background-color: #F47920; color: #fff; border-top: 1px solid #F47920;
+}
+#modal-dang-ky-nhan-tin input{
+    width: 100%; height: 50px; border: 0px; border-radius: 8px;
+}
+#modal-dang-ky-nhan-tin .btn-dang-ky{
+    width: 100%; height: 50px; border: 0px; border-radius: 8px; background-color: #000000; color: #fff;
+}
+@media (min-width: 992px) {
+    #modal-dang-ky-nhan-tin .modal-body{
+        padding: 0 80px;
     }
 }
