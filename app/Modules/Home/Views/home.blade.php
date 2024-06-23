@@ -1193,7 +1193,40 @@
                 </div>
             </div>
         @elseif($data['homeSetting']->display_type == \App\Modules\Home\Models\HomeSetting::SERVICE_DISPLAY_TYPE)
-            @if($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::OTHER_SERVICE_TYPE)
+        @if($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::VIDEO_DISPLAY_TYPE)
+            <div class="video_list service" style="background-color: {{ $data['homeSetting']->background_color }}">
+                <div class="container title_section" style="color: {{ $data['homeSetting']->title_color }} !important; text-align: {{ $data['homeSetting']->title_position }}">{!! $data['homeSetting']->title !!}</div>
+                <div class="container">
+                    <div class="video_list_items">
+                        <div class="row">
+                            @php   
+                                $images = json_decode($data['homeSetting']->images, true);
+                            @endphp
+                            @if(isset($images[0]) && $images[0] != "")
+                                <div class="col-md-6">
+                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[0]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            @endif
+                            @if(isset($images[1]) && $images[1] != "")
+                                <div class="col-md-6">
+                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[1]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            @endif
+                            @if(isset($images[2]) && $images[2] != "")
+                                <div class="col-md-6">
+                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[2]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            @endif
+                            @if(isset($images[3]) && $images[3] != "")
+                                <div class="col-md-6">
+                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[3]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @elseif($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::OTHER_SERVICE_TYPE)
                 @if($data['homeSetting']->quantity == \App\Modules\Home\Models\HomeSetting::SERVICE_TWO)
                     <section id="home_service_two" style="background-color: {{ $data['homeSetting']->background_color }}">
                         <div class="container">

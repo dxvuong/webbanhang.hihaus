@@ -46,6 +46,7 @@ class HomeSetting extends Model
     const BORDER_SERVICE_TYPE = 24;
     const FULL_SERVICE_TYPE = 25;
     const SLIDE_4_SERVICE_TYPE = 26;
+    const VIDEO_DISPLAY_TYPE = 27;
 
     const FOLDER_DISPLAY_TYPE = 1;
     const MENU_DISPLAY_TYPE = 2;
