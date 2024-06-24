@@ -21,7 +21,7 @@
 	<link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/assets/style.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/css/custom.css')}}" rel="stylesheet" type="text/css">
-	<link href="{{asset('public/css/vuong.css?v=1.0.7')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('public/css/vuong.css?v=1.0.8')}}" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" type="text/css">
 	 <!--Owl Carousel -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">

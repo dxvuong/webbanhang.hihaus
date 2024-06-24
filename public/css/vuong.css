@@ -47,7 +47,7 @@
 }
 @media (min-width: 1440px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-        max-width: 1620px;
+        max-width: 1650px;
     }
     .container-fuild{
         max-width: 1620px; margin: 0 auto; position: relative;
@@ -318,6 +318,82 @@
 
 
 /* .blog_list */
-.blog_list{
+.blog_list.{
     padding-top: 1px;
+}
+.blog_list .img{
+    border-radius: 0;
+}
+.blog_list .img img{
+    border-radius: 0;
+}
+.blog_list.blog_display_type{
+    width: 100%; height: auto; padding: 30px 10px; 
+}
+.blog_list.partner{
+    width: 100%; height: auto; padding: 30px 10px; border-bottom: 1px solid #BBBBBB;
+}
+.blog_list.slide_list{
+    width: 100%; height: auto; padding: 10px 10px;
+}
+.blog_list.full_service .box-button .btn-chi-tiet{
+    background-color: #000000; color: #fff; border: 1px solid #fff; padding: 12px 20px; border-radius: 8px;
+}
+.blog_list.slide_list{
+    width: 100%; height: auto; padding: 1px 0px;
+}
+.blog_list.slide_list .container .div-hide-left, .blog_list.slide_list .container .div-hide-right{
+    display: none;
+}
+.blog_list.slide_list .owl-theme{
+
+}
+.blog_list.slide_list .owl-theme .owl-item{
+    padding: 0 7px;
+}
+.blog_list.slide_list .owl-theme .owl-item .item{
+    border: 1px solid #fff;
+}
+#div-tin-4-chay-ngang{
+    width: 100%; padding: 0 5px; overflow: hidden; position: relative;
+}
+#div-tin-4-chay-ngang .owl-carousel .owl-stage-outer {
+    overflow: unset !important;
+}
+#div-tin-4-chay-ngang .nav-btn{
+    height: 47px;
+    position: absolute;
+    width: 26px;
+    cursor: pointer;
+    top: 45% !important;
+}
+#div-tin-4-chay-ngang .nav-btn i{
+    color: #fff; font-size: 24px;
+}
+#div-tin-4-chay-ngang .owl-prev.disabled,
+#div-tin-4-chay-ngang .owl-next.disabled{
+    pointer-events: none;
+    opacity: 0.2;
+}
+#div-tin-4-chay-ngang .prev-slide{
+    left: 10px;
+}
+#div-tin-4-chay-ngang .next-slide{
+    right: 10px;
+}
+@media (min-width: 992px) {
+    .blog_list.full_service{
+        padding: 35px 35px;
+    }
+}
+@media (min-width: 1440px) {
+    .blog_list.slide_list .container{
+        max-width: 1664px; position: relative; overflow: hidden;
+    }
+    .blog_list.slide_list .container .div-hide-left{
+        position: absolute; width: 23px; height: 100%; left: 0; top: 0; display: inline; z-index: 9999;
+    }
+    .blog_list.slide_list .container .div-hide-right{
+        position: absolute; width: 23px; height: 100%; right: 0; top: 0; display: inline; z-index: 9999;
+    }
 }

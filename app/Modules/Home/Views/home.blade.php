@@ -1193,39 +1193,39 @@
                 </div>
             </div>
         @elseif($data['homeSetting']->display_type == \App\Modules\Home\Models\HomeSetting::SERVICE_DISPLAY_TYPE)
-        @if($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::VIDEO_DISPLAY_TYPE)
-            <div class="video_list service" style="background-color: {{ $data['homeSetting']->background_color }}">
-                <div class="container title_section" style="color: {{ $data['homeSetting']->title_color }} !important; text-align: {{ $data['homeSetting']->title_position }}">{!! $data['homeSetting']->title !!}</div>
-                <div class="container">
-                    <div class="video_list_items">
-                        <div class="row">
-                            @php   
-                                $images = json_decode($data['homeSetting']->images, true);
-                            @endphp
-                            @if(isset($images[0]) && $images[0] != "")
-                                <div class="col-md-6">
-                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[0]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                </div>
-                            @endif
-                            @if(isset($images[1]) && $images[1] != "")
-                                <div class="col-md-6">
-                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[1]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                </div>
-                            @endif
-                            @if(isset($images[2]) && $images[2] != "")
-                                <div class="col-md-6">
-                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[2]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                </div>
-                            @endif
-                            @if(isset($images[3]) && $images[3] != "")
-                                <div class="col-md-6">
-                                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[3]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                </div>
-                            @endif
+            @if($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::VIDEO_DISPLAY_TYPE)
+                <div class="video_list service" style="background-color: {{ $data['homeSetting']->background_color }}">
+                    <div class="container title_section" style="color: {{ $data['homeSetting']->title_color }} !important; text-align: {{ $data['homeSetting']->title_position }}">{!! $data['homeSetting']->title !!}</div>
+                    <div class="container">
+                        <div class="video_list_items">
+                            <div class="row">
+                                @php   
+                                    $images = json_decode($data['homeSetting']->images, true);
+                                @endphp
+                                @if(isset($images[0]) && $images[0] != "")
+                                    <div class="col-md-6">
+                                        <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[0]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    </div>
+                                @endif
+                                @if(isset($images[1]) && $images[1] != "")
+                                    <div class="col-md-6">
+                                        <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[1]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    </div>
+                                @endif
+                                @if(isset($images[2]) && $images[2] != "")
+                                    <div class="col-md-6">
+                                        <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[2]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    </div>
+                                @endif
+                                @if(isset($images[3]) && $images[3] != "")
+                                    <div class="col-md-6">
+                                        <iframe width="100%" height="450px" src="https://www.youtube.com/embed/{{$images[3]}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @elseif($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::OTHER_SERVICE_TYPE)
                 @if($data['homeSetting']->quantity == \App\Modules\Home\Models\HomeSetting::SERVICE_TWO)
                     <section id="home_service_two" style="background-color: {{ $data['homeSetting']->background_color }}">
@@ -1611,7 +1611,7 @@
                     </div>
                 </section>
             @elseif($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::FULL_SERVICE_TYPE)
-                <div class="blog_list service" style="background-color: {{ $data['homeSetting']->background_color }}">
+                <div class="blog_list service full_service" style="background-color: {{ $data['homeSetting']->background_color }}">
                     <div class="container title_section" style="color: {{ $data['homeSetting']->title_color }} !important; text-align: {{ $data['homeSetting']->title_position }}">{!! $data['homeSetting']->title !!}</div>
                     <div style="margin-bottom: 15px;">{!! $data['homeSetting']->description !!}</div>
                     <div class="container-fluid">
@@ -1644,7 +1644,7 @@
                                     </article>
                                     @if(!empty(json_decode($itemService->button)->{'button'}))
                                         <div class="box-button mt-2 mb-3 @if($data['homeSetting']->item_title_position == 'center') text-center @else text-left @endif">
-                                            <a class="btn btn-primary @if($itemService->button_type == 'popup') btn-quote-and-promotion @endif" href="{{ $itemService->link }}" data-id="{{$itemService->id}}" data-name="{{$itemService->name}}" style="width: fit-content; margin: 0 auto;">
+                                            <a class="btn btn-chi-tiet @if($itemService->button_type == 'popup') btn-quote-and-promotion @endif" href="{{ $itemService->link }}" data-id="{{$itemService->id}}" data-name="{{$itemService->name}}" style="width: fit-content; margin: 0 auto;">
                                                 {!! !empty(json_decode($itemService->button)->{'icon'}) ? json_decode($itemService->button)->{'icon'} : '' !!}
                                                 {{ !empty(json_decode($itemService->button)->{'button'}) ? json_decode($itemService->button)->{'button'} : '' }}
                                             </a>
@@ -1656,13 +1656,13 @@
                     </div>
                 </div>
             @elseif($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::SLIDE_4_SERVICE_TYPE)
-                <div class="blog_list service" style="background-color: {{ $data['homeSetting']->background_color }}">
+                <div class="blog_list service slide_list" style="background-color: {{ $data['homeSetting']->background_color }}">
                     <div class="container title_section" style="color: {{ $data['homeSetting']->title_color }} !important; text-align: {{ $data['homeSetting']->title_position }}">{!! $data['homeSetting']->title !!}</div>
                     <div style="margin-bottom: 15px;">{!! $data['homeSetting']->description !!}</div>
                     <div class="container">
                         <div class="owl-carousel owl-theme" id="div-tin-4-chay-ngang">
                             @foreach( $data['homeSetting']->services as $itemService)
-                                <div class="item" style="border: 1px solid #fff;">
+                                <div class="item">
                                     @if(!empty($itemService->link))
                                         <a href="{{ $itemService->link }}">
                                             <img loading="lazy" class="w-100" src="{{$admin_url.$itemService->image}}" alt="{{$itemService->name}}" style="max-width: none; max-height: none;" />
@@ -1680,6 +1680,8 @@
                                 </div>
                             @endforeach
                         </div>
+                        <div class="div-hide-left" style="background-color: {{ $data['homeSetting']->background_color }}"></div>
+                        <div class="div-hide-right" style="background-color: {{ $data['homeSetting']->background_color }}"></div>
                     </div>
                 </div>
             @elseif($data['homeSetting']->item_type == \App\Modules\Home\Models\HomeSetting::ROUND_CORNER_SERVICE_TYPE)
@@ -1863,34 +1865,6 @@
         .contact-content .icon {
             border: 4px solid {{ $setting->header_background_color }};
             color: {{ $setting->header_background_color }};
-        }
-
-        #div-tin-4-chay-ngang{
-            width: 100%; padding: 0 5px; overflow: hidden;
-        }
-        #div-tin-4-chay-ngang .owl-carousel .owl-stage-outer {
-            overflow: unset !important;
-        }
-        #div-tin-4-chay-ngang .nav-btn{
-            height: 47px;
-            position: absolute;
-            width: 26px;
-            cursor: pointer;
-            top: 45% !important;
-        }
-        #div-tin-4-chay-ngang .nav-btn i{
-            color: #fff; font-size: 24px;
-        }
-        #div-tin-4-chay-ngang .owl-prev.disabled,
-        #div-tin-4-chay-ngang .owl-next.disabled{
-            pointer-events: none;
-            opacity: 0.2;
-        }
-        #div-tin-4-chay-ngang .prev-slide{
-            left: -0px;
-        }
-        #div-tin-4-chay-ngang .next-slide{
-            right: -0px;
         }
     </style>
 @endsection
