@@ -21,7 +21,7 @@
 	<link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/assets/style.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset('public/css/custom.css')}}" rel="stylesheet" type="text/css">
-	<link href="{{asset('public/css/vuong.css?v=1.0.8')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset('public/css/vuong.css?v=1.0.9')}}" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" type="text/css">
 	 <!--Owl Carousel -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -577,7 +577,8 @@
 										@endif
 										@foreach($menu as $item)
 											@php($link = trim($item->link, '/'))
-											<li class="nav-item @if($segment == $link) active @endif @if($item->children->count() > 0) dropdown @endif @if($item->link == 'app-api') dropdown @endif">
+											<li class="nav-item nav-item-desktop @if($segment == $link) active @endif @if($item->children->count() > 0) dropdown @endif @if($item->link == 'app-api') dropdown @endif">
+												<div class="nav-item-hover"><div></div></div>
 												@if(!empty($item->link))
 													@if($item->link == 'app-api')
 														<a class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#" style="color: {{ $setting->header_text_color }}">
